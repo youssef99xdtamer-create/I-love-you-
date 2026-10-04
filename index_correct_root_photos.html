@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>رسالة ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#ffe8ef;color:#5b1830;text-align:center}
+.screen{display:none;min-height:100vh;align-items:center;justify-content:center;padding:24px}
+.screen.active{display:flex}
+.cover{flex-direction:column}
+.envelope{font-size:90px;cursor:pointer;animation:float 2s ease-in-out infinite}
+button{border:0;border-radius:999px;padding:14px 24px;background:#e75480;color:white;font-size:18px;cursor:pointer}
+.book{width:min(720px,96vw)}
+.page{display:none;flex-direction:column;gap:18px;align-items:center;justify-content:center;min-height:80vh}
+.page.active{display:flex}
+.page h1{font-size:clamp(24px,7vw,44px);line-height:1.6;margin:0}
+.page p{font-size:clamp(18px,5vw,26px);line-height:1.9;margin:0}
+.photo{max-width:92%;max-height:65vh;border-radius:22px;object-fit:contain;box-shadow:0 8px 30px #0002}
+.nav{display:flex;gap:10px;justify-content:center}
+@keyframes float{50%{transform:translateY(-10px)}}
+</style>
+</head>
+<body>
+<section id="cover" class="screen active cover">
+  <div class="envelope" onclick="openBook()">💌</div>
+  <h1>افتحي الرسالة ❤️</h1>
+  <button onclick="openBook()">افتحي الرسالة</button>
+</section>
+
+<section id="book" class="screen">
+<div class="book">
+<article class="page active">
+  <h1>وجودك مهم أوي في حياتي بحبك أوي أوي والله و بموت فيكي ❤️</h1>
+</article>
+<article class="page">
+  <img class="photo" src="photo1.jpg" alt="">
+</article>
+<article class="page">
+  <p>أكتر حاجة بحبها هي التفاصيل الصغيرة… كلمة منك، ضحكة، أو حتى رسالة بسيطة. ❤️</p>
+</article>
+<article class="page">
+  <img class="photo" src="photo2.jpg" alt="">
+</article>
+<article class="page">
+  <p>شكراً إنك موجودة في حياتي، وشكراً على كل لحظة حلوة عملناها مع بعض، وإن شاء الله يا قلبي نعمل لحظات أحلى وأحلى ❤️</p>
+</article>
+<article class="page">
+  <img class="photo" src="photo3.jpg" alt="">
+  <p>عايزك تعرفي إني بحبك أوي، ومقدرش أعيش من غيرك ولا لحظة والله. بحبك أوي وبعشقك يا حبيبتي، يا أغلى حاجة في حياتي. ربنا ميحرمنيش منك يا روحي، بموت فيكي ❤️</p>
+</article>
+<div class="nav">
+  <button onclick="prevPage()">السابق</button>
+  <button onclick="nextPage()">التالي</button>
+</div>
+</div>
+</section>
+
+<script>
+let current=0;
+const pages=document.querySelectorAll('.page');
+function openBook(){
+ document.getElementById('cover').classList.remove('active');
+ document.getElementById('book').classList.add('active');
+}
+function showPage(){
+ pages.forEach((p,i)=>p.classList.toggle('active',i===current));
+}
+function nextPage(){if(current<pages.length-1){current++;showPage()}}
+function prevPage(){if(current>0){current--;showPage()}}
+</script>
+</body>
+</html>
